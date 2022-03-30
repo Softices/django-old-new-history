@@ -22,7 +22,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name='django-old-new-history',
-    version='1.0.0',
+    version='1.0.1',
     license='MIT',
     description="Show the old and new value of model's change field in history.",
     long_description=long_description,
