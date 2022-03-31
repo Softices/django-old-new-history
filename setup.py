@@ -17,7 +17,7 @@ if sys.argv[-1] == 'publish':
     os.system('python setup.py bdist_wheel upload')
     sys.exit()
 
-with open("README.md", "r", encoding="utf-8") as fh:
+with open("README.rst", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
