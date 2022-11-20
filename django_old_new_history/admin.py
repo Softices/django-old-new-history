@@ -1,7 +1,7 @@
 from django.utils.text import capfirst
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.html import format_html
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 class DjangoOldNewHistory:
@@ -42,8 +42,8 @@ class DjangoOldNewHistory:
             for formset in formsets:
                 for added_object in formset.new_objects:
                     add_and_delete_message.append(_('<li>Added %(name)s "%(object)s".</li>')
-                                                  % {'name': force_text(added_object._meta.verbose_name),
-                                                     'object': force_text(added_object)})
+                                                  % {'name': force_str(added_object._meta.verbose_name),
+                                                     'object': force_str(added_object)})
                 for changed_object, changed_fields in formset.changed_objects:
                     for form in formset.initial_forms:
                         if form.instance != changed_object:
@@ -65,14 +65,14 @@ class DjangoOldNewHistory:
                                                 f'<td>{field_name}</td>' \
                                                 f'<td>{old_value}</td>' \
                                                 f'<td>{new_value}</td>' \
-                                                f'<td>{force_text(changed_object._meta.verbose_name)} ' \
-                                                f'"{force_text(changed_object)}".</td>' \
+                                                f'<td>{force_str(changed_object._meta.verbose_name)} ' \
+                                                f'"{force_str(changed_object)}".</td>' \
                                                 f'</tr>'
 
                 for deleted_object in formset.deleted_objects:
                     add_and_delete_message.append(_('<li>Deleted %(name)s "%(object)s".</li>')
-                                                  % {'name': force_text(deleted_object._meta.verbose_name),
-                                                     'object': force_text(deleted_object)})
+                                                  % {'name': force_str(deleted_object._meta.verbose_name),
+                                                     'object': force_str(deleted_object)})
         if change_order_list:
             add_and_delete_message.append(f'<li>{change_order_list}</tbody></table></li>')
         change_message = ' '.join(add_and_delete_message)

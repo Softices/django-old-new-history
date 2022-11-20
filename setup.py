@@ -22,7 +22,7 @@ with open("README.rst", "r", encoding="utf-8") as fh:
 
 setup(
     name='django-old-new-history',
-    version='1.0.1',
+    version='1.0.3',
     license='MIT',
     description="Show the old and new value of model's change field in history.",
     long_description=long_description,
@@ -45,12 +45,14 @@ setup(
         "Framework :: Django :: 2.2",
         "Framework :: Django :: 3.2",
         "Framework :: Django :: 4.0",
+        "Framework :: Django :: 4.1",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
         "License :: OSI Approved :: MIT License",
     ],
     zip_safe=False,
