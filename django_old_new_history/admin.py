@@ -17,7 +17,7 @@ class DjangoOldNewHistory:
                        f"<th>Field</th>" \
                        f"<th>Old value</th>" \
                        f"<th>New value</th>" \
-                       f"<th>Comment</th></tr><thead>"
+                       f"<th>Comment</th></tr></thead>"
         if form.changed_data:
             change_order_list = table_header
             for field in form.changed_data:
