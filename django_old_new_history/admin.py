@@ -12,11 +12,12 @@ class DjangoOldNewHistory:
         change_order_list = ""
         table_header = f"Changed field <table border='1' style='border-bottom: 1.3px solid #cccccc;'>" \
                        f"<tbody>" \
-                       f"<tr style='background:#f6f6f6;'>" \
+                       f"<thead>" \
+                       f"<tr>" \
                        f"<th>Field</th>" \
                        f"<th>Old value</th>" \
                        f"<th>New value</th>" \
-                       f"<th>Comment</th></tr>"
+                       f"<th>Comment</th></tr><thead>"
         if form.changed_data:
             change_order_list = table_header
             for field in form.changed_data:
