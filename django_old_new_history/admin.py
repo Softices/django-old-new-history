@@ -24,7 +24,7 @@ class DjangoOldNewHistory:
             for field in form.changed_data:
                 field_name = capfirst(self.model._meta.get_field(field).verbose_name)
                 if form.initial and field in form.initial:
-                    if hasattr(form.fields[field], 'queryset'):
+                    if form.initial[field] and hasattr(form.fields[field], 'queryset'):
                         old_value = form.fields[field].queryset.get(id=form.initial[field])
                         if getattr(old_value, '__unicode__', False):
                             old_value = old_value.__unicode__()
