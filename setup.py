@@ -17,12 +17,12 @@ if sys.argv[-1] == 'publish':
     os.system('python setup.py bdist_wheel upload')
     sys.exit()
 
-with open("README.rst", "r", encoding="utf-8") as fh:
+with open("PypiREADME.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
     name='django-old-new-history',
-    version='1.0.1',
+    version='1.0.3',
     license='MIT',
     description="Show the old and new value of model's change field in history.",
     long_description=long_description,

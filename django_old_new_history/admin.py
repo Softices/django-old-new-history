@@ -1,7 +1,14 @@
 from django.utils.text import capfirst
-from django.utils.encoding import force_text
 from django.utils.html import format_html
-from django.utils.translation import ugettext_lazy as _
+try:
+    from django.utils.encoding import force_text
+except ImportError:
+    from django.utils.encoding import force_str
+
+try:
+    from django.utils.translation import ugettext_lazy as _
+except ImportError:
+    from django.utils.translation import gettext_lazy as _
 
 
 class DjangoOldNewHistory:
@@ -22,7 +29,15 @@ class DjangoOldNewHistory:
             for field in form.changed_data:
                 field_name = capfirst(self.model._meta.get_field(field).verbose_name)
                 if form.initial[field] is not None and hasattr(form.fields[field], 'queryset'):
-                    old_value = form.fields[field].queryset.get(id=form.initial[field]).__unicode__()
+                    try:
+                        old_value = form.fields[field].queryset.get(id=form.initial[field])
+                    except Exception:
+                        old_value = ''
+                    else:
+                        try:
+                            old_value = old_value.__unicode__()
+                        except Exception:
+                            old_value = str(old_value)
                 else:
                     old_value = form.initial[field]
                 new_value = form.cleaned_data[field]
